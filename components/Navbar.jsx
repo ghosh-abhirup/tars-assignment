@@ -28,6 +28,7 @@ const Navbar = (props) => {
         startDecorator={<SearchIcon />}
         sx={{
           flex: 1,
+          outline: "0px",
           marginLeft: "64px",
           marginRight: "27px",
           padding: "14px 12px ",
