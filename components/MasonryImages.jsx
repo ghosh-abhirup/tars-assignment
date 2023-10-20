@@ -45,24 +45,24 @@ const MasonryImages = ({ searchQuery }) => {
 
   return (
     <div className="px-7 sm:px-[10rem] py-10 w-full h-full bg-white dark:bg-[#232323]">
-      <ResponsiveMasonry columnsCountBreakPoints={{ 200: 1, 350: 2, 900: 3 }}>
-        <div className="hidden sm:block">
-          <Masonry gutter="36px">
-            {images &&
-              images?.map((imageData, index) => (
-                <ImageCard data={imageData} key={imageData.id} />
-              ))}
-          </Masonry>
-        </div>
-        <div className="block sm:hidden">
-          <Masonry gutter="10px">
-            {images &&
-              images?.map((imageData, index) => (
-                <ImageCard data={imageData} key={imageData.id} />
-              ))}
-          </Masonry>
-        </div>
-      </ResponsiveMasonry>
+      {/* <ResponsiveMasonry columnsCountBreakPoints={{ 200: 1, 350: 2, 900: 3 }}> */}
+      <div className="hidden sm:block">
+        <Masonry gutter="36px" columnsCount={3}>
+          {images &&
+            images?.map((imageData, index) => (
+              <ImageCard data={imageData} key={imageData.id} />
+            ))}
+        </Masonry>
+      </div>
+      <div className="block sm:hidden">
+        <Masonry gutter="10px" columnsCount={2}>
+          {images &&
+            images?.map((imageData, index) => (
+              <ImageCard data={imageData} key={imageData.id} />
+            ))}
+        </Masonry>
+      </div>
+      {/* </ResponsiveMasonry> */}
     </div>
   );
 };

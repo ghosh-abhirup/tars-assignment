@@ -5,6 +5,7 @@ import Tag from "./Tag";
 import axios from "axios";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { smallerRepresentation } from "@/constants/numberShortener";
+import CloseIcon from "@mui/icons-material/Close";
 
 const DetailsPopup = ({ id, isDialogOpen, onClose }) => {
   const [imageData, setImageData] = useState(null);
@@ -26,17 +27,31 @@ const DetailsPopup = ({ id, isDialogOpen, onClose }) => {
   }, [id]);
 
   return (
-    <Transition appear show={isDialogOpen} as={Fragment}>
-      <Dialog as="div" onClose={onClose} className={`relative z-20`}>
-        <div className="fixed inset-0 flex w-screen items-center justify-center">
-          {/* The actual dialog panel  */}
-          <Dialog.Panel className="mx-auto max-w-[950px] w-[80%] sm:w-[60%] rounded-[8px] overflow-hidden bg-white dark:bg-[#232323] flex flex-col shadow-lg">
+    <Dialog
+      as="div"
+      open={isDialogOpen}
+      onClose={onClose}
+      className={`relative z-20`}
+    >
+      <div className="fixed inset-0 flex w-screen items-center justify-center bg-black/[0.5]">
+        {/* The actual dialog panel  */}
+        <Transition
+          as={Fragment}
+          enter="transition ease-out duration-200"
+          enterFrom="opacity-0 translate-y-0"
+          enterTo="opacity-100 translate-y-1"
+          leave="transition ease-in duration-150"
+          leaveFrom="opacity-100 translate-y-1"
+          leaveTo="opacity-0 translate-y-0"
+          show={isDialogOpen}
+        >
+          <Dialog.Panel className="relative mx-auto max-w-[950px] w-[80%] sm:w-[60%] rounded-[8px]  bg-white dark:bg-[#232323] flex flex-col shadow-lg">
             <img
               src={imageData?.urls.raw}
               className="h-[300px] sm:h-[400px]  bg-contain mx-auto"
               alt="full img"
             />
-            <div className="flex-1 bg-white dark:bg-[#232323] p-5 sm:p-6 flex-col justify-between">
+            <div className="flex-1 bg-white dark:bg-[#232323] rounded-b-[8px] p-5 sm:p-6 flex-col justify-between">
               <div className="flex justify-between items-center">
                 {/* User details */}
                 <div className="flex flex-col sm:flex-row gap-2">
@@ -98,7 +113,7 @@ const DetailsPopup = ({ id, isDialogOpen, onClose }) => {
                 </div>
               </div>
 
-              <div>
+              <div className="mt-4">
                 <p className="font-bold text-[12px] text-[#4F4F4F] dark:text-white">
                   Related Tags
                 </p>
@@ -110,10 +125,17 @@ const DetailsPopup = ({ id, isDialogOpen, onClose }) => {
                 </div>
               </div>
             </div>
+
+            <div
+              onClick={onClose}
+              className="w-8 sm:w-9 h-8 sm:h-9 bg-white cursor-pointer  rounded-full flex items-center justify-center p-[5px] absolute z-40 -top-[10px] -right-[10px] "
+            >
+              <CloseIcon className="text-black " />
+            </div>
           </Dialog.Panel>
-        </div>
-      </Dialog>
-    </Transition>
+        </Transition>
+      </div>
+    </Dialog>
   );
 };
 

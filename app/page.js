@@ -24,7 +24,7 @@ export default function Home() {
     <>
       <div className=" relative w-full h-[372px] sm:h-[384px] bg-[url('../public/images/homepage_bg.png')] bg-cover bg-no-repeat bg-center">
         {/* <Image src={heroBg} className="w-full object-contain" alt="hero" /> */}
-        <div className="w-full absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+        <div className="w-full absolute z-[5] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
           <p className="px-[50px] font-bold text-2xl sm:text-3xl mb-2.5 sm:mb-4 text-white text-center">
             Download High Quality Images by creators
           </p>
@@ -64,7 +64,12 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* <MasonryImages searchQuery={searchQuery} /> */}
+      {searchQuery && searchQuery !== "" && (
+        <p className="font-bold text-lg sm:text-3xl text-black dark:text-white mt-4 sm:mt-6 px-7 sm:px-[10rem]">
+          Showing results for "{searchQuery}"
+        </p>
+      )}
+      <MasonryImages searchQuery={searchQuery} />
     </>
   );
 }
