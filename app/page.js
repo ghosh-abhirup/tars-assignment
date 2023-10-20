@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Input } from "@mui/joy";
 import SearchIcon from "@mui/icons-material/Search";
 import { useState } from "react";
+import MasonryImages from "@/components/MasonryImages";
 
 export default function Home() {
   const [searchInp, setSearchInp] = useState("");
@@ -54,6 +55,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <MasonryImages />
     </>
   );
 }
