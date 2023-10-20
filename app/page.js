@@ -1,15 +1,24 @@
 "use client";
 
-import Navbar from "@/components/Navbar";
-import heroBg from "../public/images/homepage_bg.png";
-import Image from "next/image";
 import { Input } from "@mui/joy";
 import SearchIcon from "@mui/icons-material/Search";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MasonryImages from "@/components/MasonryImages";
 
 export default function Home() {
   const [searchInp, setSearchInp] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    const debounce = setTimeout(() => {
+      setSearchQuery(searchInp);
+      console.log(searchInp);
+    }, 1000);
+
+    return () => {
+      clearTimeout(debounce);
+    };
+  }, [searchInp]);
 
   return (
     <>
@@ -25,7 +34,7 @@ export default function Home() {
           <div className="w-4/5 hidden sm:block">
             <Input
               value={searchInp}
-              onChange={(event) => setSearchInp(event.target.value)}
+              onChange={(event) => setSearchInp(event.target.value.trim())}
               placeholder="Search high resolution Images, categories, wallpapers"
               startDecorator={<SearchIcon />}
               sx={{
@@ -55,7 +64,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <MasonryImages />
+      {/* <MasonryImages searchQuery={searchQuery} /> */}
     </>
   );
 }

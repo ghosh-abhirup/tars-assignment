@@ -27,7 +27,7 @@ const DetailsPopup = ({ id, isDialogOpen, onClose }) => {
 
   return (
     <Transition appear show={isDialogOpen} as={Fragment}>
-      <Dialog as="div" onClose={onClose} className={`relative z-10`}>
+      <Dialog as="div" onClose={onClose} className={`relative z-20`}>
         <div className="fixed inset-0 flex w-screen items-center justify-center">
           {/* The actual dialog panel  */}
           <Dialog.Panel className="mx-auto max-w-[950px] w-[80%] sm:w-[60%] rounded-[8px] overflow-hidden bg-white dark:bg-[#232323] flex flex-col shadow-lg">
@@ -45,11 +45,11 @@ const DetailsPopup = ({ id, isDialogOpen, onClose }) => {
                       <img
                         src={imageData?.user.profile_image.large}
                         className="w-full h-full bg-contain"
-                        alt=""
+                        alt="user logo"
                       />
                     </div>
 
-                    <div className="flex fle-col gap-2 justify-center">
+                    <div className="flex flex-col justify-center">
                       <p className="text-black dark:text-white font-bold text-[12px] sm:text-[14px] truncate w-[100%]">
                         {imageData?.user.name}
                       </p>

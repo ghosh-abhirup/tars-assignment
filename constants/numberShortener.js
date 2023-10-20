@@ -6,6 +6,6 @@ export const smallerRepresentation = (num) => {
   } else if (num >= 1e3) {
     return (num / 1e3).toFixed(2) + "K";
   } else {
-    return num.toString();
+    return num?.toString();
   }
 };

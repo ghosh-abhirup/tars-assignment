@@ -10,7 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Divider } from "@mui/material";
 
 const Navbar = (props) => {
-  const [searchInp, setSearchInp] = useState("");
+  // const [searchInp, setSearchInp] = useState("");
   const [theme, setTheme] = useState("light");
   const [isChecked, setIsChecked] = useState(false);
 
@@ -25,7 +25,7 @@ const Navbar = (props) => {
       >
         Image Gallery
       </p>
-      <div className="w-fit flex-1 hidden sm:block">
+      {/* <div className="w-fit flex-1 hidden sm:block">
         <Input
           value={searchInp}
           onChange={(event) => setSearchInp(event.target.value)}
@@ -42,23 +42,25 @@ const Navbar = (props) => {
             boxShadow: "0px 4px 19px 0px rgba(0, 0, 0, 0.05) inset",
           }}
         />
-      </div>
+      </div> */}
 
-      <div className="navlinks">
-        <p className="navlink">Explore</p>
-        <p className="navlink">Collection</p>
-        <p className="navlink">Communities</p>
-      </div>
+      <div className="flex gap-4">
+        <div className="navlinks">
+          <p className="navlink">Explore</p>
+          <p className="navlink">Collection</p>
+          <p className="navlink">Communities</p>
+        </div>
 
-      <div className="darkToggle">
-        <p className="text-xs font-semibold dark:text-white">{`${
-          theme === "light" ? "Dark" : "Light"
-        } mode`}</p>
-        <ToggleTheme
-          theme={theme}
-          isChecked={isChecked}
-          onChange={() => setIsChecked((prev) => !prev)}
-        />
+        <div className="darkToggle">
+          <p className="text-xs font-semibold dark:text-white">{`${
+            theme === "light" ? "Dark" : "Light"
+          } mode`}</p>
+          <ToggleTheme
+            theme={theme}
+            isChecked={isChecked}
+            onChange={() => setIsChecked((prev) => !prev)}
+          />
+        </div>
       </div>
 
       <div className="block sm:hidden">
