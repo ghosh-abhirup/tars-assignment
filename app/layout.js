@@ -14,7 +14,9 @@ export default function RootLayout({ children }) {
         <div className="relative w-full navbarParent">
           <Navbar />
         </div>
-        <div className="relative w-full pageParent">{children}</div>
+        <div className="relative w-full pageParent bg-white dark:bg-[#232323]">
+          {children}
+        </div>
       </body>
     </html>
   );

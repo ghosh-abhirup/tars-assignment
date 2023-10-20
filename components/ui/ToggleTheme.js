@@ -4,11 +4,16 @@ import * as React from "react";
 import { Switch } from "@headlessui/react";
 
 const ToggleTheme = ({ theme, isChecked, onChange }) => {
+  const toggleTheme = () => {
+    document.documentElement.classList.toggle("dark");
+  };
+
   return (
     <>
       <Switch
         checked={isChecked}
         onChange={onChange}
+        onClick={toggleTheme}
         className={`${
           theme === "dark" ? "bg-white" : "bg-[#858484]"
         } relative inline-flex h-6 w-11 items-center rounded-full`}
