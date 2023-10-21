@@ -10,11 +10,12 @@ const MasonryImages = ({ searchQuery }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchRandomImages = async () => {
+    console.log("Calling images data");
     try {
       let apiCall = "";
 
       if (searchQuery !== "") {
-        apiCall = `https://api.unsplash.com/photos?page=1&query=${searchQuery}&client_id=${process.env.NEXT_PUBLIC_ACCESS_KEY}`;
+        apiCall = `https://api.unsplash.com/search/photos?page=1&query=${searchQuery}&client_id=${process.env.NEXT_PUBLIC_ACCESS_KEY}`;
       } else {
         apiCall = `https://api.unsplash.com/photos/random?count=10&client_id=${process.env.NEXT_PUBLIC_ACCESS_KEY}`;
       }
@@ -22,7 +23,13 @@ const MasonryImages = ({ searchQuery }) => {
       const res = await axios(apiCall);
 
       console.log(res?.data);
-      setImages(res?.data);
+
+      if (searchQuery !== "") {
+        setImages(res?.data?.results);
+      } else {
+        setImages(res?.data);
+      }
+
       setIsLoading(false);
     } catch (error) {
       console.log("Error", error);
