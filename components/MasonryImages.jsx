@@ -8,6 +8,7 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 const MasonryImages = ({ searchQuery }) => {
   const [images, setImages] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   const fetchRandomImages = async () => {
     console.log("Calling images data");
@@ -32,6 +33,7 @@ const MasonryImages = ({ searchQuery }) => {
 
       setIsLoading(false);
     } catch (error) {
+      setIsError(true);
       console.log("Error", error);
     }
   };
@@ -40,7 +42,7 @@ const MasonryImages = ({ searchQuery }) => {
     fetchRandomImages();
   }, [searchQuery]);
 
-  if (isLoading) {
+  if (isLoading && !isError) {
     return (
       <div className="px-7 sm:px-[10rem] py-10 w-full h-full bg-white dark:bg-[#232323] flex flex-col items-center">
         <p className="text-lg sm:text-2xl font-bold text-[#A7A7A7] dark:text-white text-center">
@@ -48,6 +50,14 @@ const MasonryImages = ({ searchQuery }) => {
         </p>
       </div>
     );
+  }
+
+  if (isLoading && isError) {
+    <div className="px-7 sm:px-[10rem] py-10 w-full h-full bg-white dark:bg-[#232323] flex flex-col items-center">
+      <p className="text-lg sm:text-2xl font-bold text-[#A7A7A7] dark:text-white text-center">
+        {`Unsplash API has exceeded request (50 requests) this hour. Please visit again at the next hour.`}
+      </p>
+    </div>;
   }
 
   return (
