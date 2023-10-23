@@ -1,3 +1,5 @@
+"use client";
+
 import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment, useEffect, useState } from "react";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
@@ -28,7 +30,7 @@ const DetailsPopup = ({ id, isDialogOpen, onClose }) => {
   }, [id]);
 
   return (
-    <Transition appear show={isDialogOpen} as={Fragment}>
+    <Transition show={isDialogOpen} as={Fragment}>
       <Dialog as="div" onClose={onClose} className={`relative z-20`}>
         <div className="fixed inset-0 flex w-screen items-center justify-center bg-black/[0.5]">
           {/* The actual dialog panel  */}

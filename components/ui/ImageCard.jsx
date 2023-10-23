@@ -48,11 +48,13 @@ const ImageCard = ({ data }) => {
           </div>
         </div>
       </div>
-      <DetailsPopup
-        id={data.id}
-        isDialogOpen={isDialogOpen}
-        onClose={() => setIsDialogOpen(false)}
-      />
+      {isDialogOpen && (
+        <DetailsPopup
+          id={data.id}
+          isDialogOpen={isDialogOpen}
+          onClose={() => setIsDialogOpen(false)}
+        />
+      )}
     </>
   );
 };

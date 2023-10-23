@@ -37,5 +37,5 @@
 }
 
 .userCard{
-  @apply bg-white dark:bg-black flex items-center justify-between py-[5px] rounded-b-[4px] sm:rounded-b-[8px] px-2 sm:px-4 border-[1px] border-solid border-[#E5E5E5] dark:border-none
+  @apply bg-white dark:bg-black flex items-center justify-between py-[5px] sm:py-[10px] rounded-b-[4px] sm:rounded-b-[8px] px-2 sm:px-4 border-[1px] border-solid border-[#E5E5E5] dark:border-none
 }
